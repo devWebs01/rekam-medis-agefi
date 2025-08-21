@@ -8,6 +8,7 @@ use App\Models\Jadwal;
 use App\Models\Pasien;
 use App\Models\Tarif;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JadwalController extends Controller
 {
@@ -18,7 +19,7 @@ class JadwalController extends Controller
         $dokter = Dokter::get();
         $pasien = Pasien::get();
         $tarif = Tarif::get();
-        $jadwal_dokter = Jadwal::with('diagnosa')->where('status', 'belum')->where('dokter_id', \Auth::user()->dokter_id)->get();
+        $jadwal_dokter = Jadwal::with('diagnosa')->where('status', 'belum')->where('dokter_id', Auth::user()->dokter_id)->get();
 
         return view('jadwal.index', compact('dokter', 'pasien', 'jadwal', 'tarif', 'jadwal_dokter'));
     }

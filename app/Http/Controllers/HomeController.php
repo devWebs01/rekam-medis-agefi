@@ -6,6 +6,7 @@ use App\Models\Dokter;
 use App\Models\Jadwal;
 use App\Models\Pasien;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,7 @@ class HomeController extends Controller
         $dokter = Dokter::count();
         $jadwal = Jadwal::count();
         $user = User::count();
-        $jadwal_dokter = Jadwal::where('dokter_id', \Auth::user()->dokter_id)->count();
+        $jadwal_dokter = Jadwal::where('dokter_id', Auth::user()->dokter_id)->count();
 
         return view('home', compact('pasien', 'dokter', 'jadwal', 'user', 'jadwal_dokter'));
     }

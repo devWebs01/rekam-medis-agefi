@@ -2,7 +2,4 @@
 
 namespace App\Http\Controllers;
 
-class DiagnosaController extends Controller
-{
-    //
-}
+class DiagnosaController extends Controller {}
