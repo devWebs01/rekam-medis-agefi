@@ -6,9 +6,9 @@
         <h1 class="mt-4">Edit Pasien</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">
-                <a href="{{ url('/pasien', []) }}"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+                <a href="{{ route('pasien.index') }}"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ url('/pasien', []) }}">Pasien</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('pasien.index') }}">Pasien</a></li>
         </ol>
         <!-- notif -->
         @if (\Session::has('notif'))
@@ -30,7 +30,7 @@
         <!-- end error -->
         <div class="card mb-4">
             <div class="card-body">
-                <form action="{{ url('/pasien/update/' . $data->id . '') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('pasien.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="col-12">
@@ -66,7 +66,7 @@
 
                     <div class="text-center mt-4">
                         <button type="submit" class="btn btn-warning">Update</button>
-                        <a href="{{ url('/pasien') }}" class="btn btn-secondary">Batal</a>
+                        <a href="{{ route('pasien.index') }}" class="btn btn-secondary">Batal</a>
                     </div>
                 </form>
 

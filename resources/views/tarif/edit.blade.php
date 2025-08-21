@@ -6,9 +6,9 @@
         <h1 class="mt-4">Edit Tarif</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">
-                <a href="{{ url('/tarif', []) }}"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+                <a href="{{ route('tarif.index') }}"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ url('/tarif', []) }}">Tarif</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('tarif.index') }}">Tarif</a></li>
         </ol>
         <!-- notif -->
         @if (\Session::has('notif'))
@@ -31,7 +31,7 @@
         <div class="col-6 col-md-6 col-lg-6">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ url('/tarif/update/' . $data->id . '') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('tarif.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col-12">
@@ -54,7 +54,7 @@
 
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-warning">Update</button>
-                            <a href="{{ url('/layanan') }}" class="btn btn-secondary">Batal</a>
+                            <a href="{{ route('tarif.index') }}" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                 </div>

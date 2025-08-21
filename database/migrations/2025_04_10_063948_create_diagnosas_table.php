@@ -15,7 +15,8 @@ class CreateDiagnosasTable extends Migration
     {
         Schema::create('diagnosas', function (Blueprint $table) {
             $table->id();
-            $table->integer('jadwal_id');
+            $table->unsignedBigInteger('jadwal_id');
+            $table->foreign('jadwal_id')->references('id')->on('jadwals')->onDelete('cascade');
             $table->text('hasil');
             $table->timestamps();
         });

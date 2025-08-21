@@ -1,65 +1,134 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Klinik Agefi Dental Care Application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi Aplikasi
 
-## About Laravel
+Aplikasi **Klinik Agefi Dental Care** adalah sistem manajemen sederhana yang dirancang untuk membantu klinik gigi mengelola data pasien, dokter, layanan, tarif, jadwal, riwayat tindakan, dan laporan. Aplikasi ini bertujuan untuk menyederhanakan proses administrasi dan pencatatan di klinik.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur-Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+*   **Manajemen Pasien:** Menambah, melihat, mengedit, dan menghapus data pasien.
+*   **Manajemen Dokter:** Menambah, melihat, mengedit, dan menghapus data dokter.
+*   **Manajemen Layanan:** Menambah, melihat, mengedit, dan menghapus jenis layanan yang ditawarkan klinik.
+*   **Manajemen Tarif:** Mengelola tarif untuk setiap layanan.
+*   **Manajemen Jadwal:** Mengatur jadwal pertemuan pasien dengan dokter, termasuk pencatatan tindakan dan diagnosa.
+*   **Riwayat Tindakan:** Melihat riwayat tindakan dan diagnosa pasien.
+*   **Laporan Harian:** Menghasilkan laporan jadwal harian berdasarkan rentang tanggal.
+*   **Manajemen Pengguna:** Mengelola akun pengguna (Dev dan User/Dokter) untuk akses sistem.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Teknologi yang Digunakan
 
-## Learning Laravel
+*   **Framework:** Laravel (PHP)
+*   **Database:** MySQL (atau database relasional lain yang didukung Laravel)
+*   **Frontend:** Bootstrap, jQuery, DataTables
+*   **Bahasa:** PHP, JavaScript, HTML, CSS
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Panduan Instalasi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Ikuti langkah-langkah berikut untuk menginstal dan menjalankan aplikasi ini di lingkungan lokal Anda:
 
-## Laravel Sponsors
+1.  **Clone Repositori:**
+    ```bash
+    git clone <URL_REPOSITORI_ANDA>
+    cd Klinik\ Agefi
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2.  **Instal Dependensi Composer:**
+    ```bash
+    composer install
+    ```
 
-### Premium Partners
+3.  **Instal Dependensi Node.js (NPM):n**
+    ```bash
+    npm install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4.  **Buat File `.env`:**
+    Salin file `.env.example` menjadi `.env`:
+    ```bash
+    cp .env.example .env
+    ```
 
-## Contributing
+5.  **Konfigurasi Database:**
+    Buka file `.env` dan sesuaikan konfigurasi database Anda:
+    ```dotenv
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=klinik_agefi # Ganti dengan nama database Anda
+    DB_USERNAME=root         # Ganti dengan username database Anda
+    DB_PASSWORD=             # Ganti dengan password database Anda
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6.  **Generate Application Key:**
+    ```bash
+    php artisan key:generate
+    ```
 
-## Code of Conduct
+7.  **Jalankan Migrasi Database:**
+    Ini akan membuat tabel-tabel yang diperlukan di database Anda.
+    ```bash
+    php artisan migrate
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8.  **Jalankan Seeder (Opsional, untuk data dummy):**
+    Ini akan mengisi database dengan data contoh untuk pasien, dokter, layanan, tarif, jadwal, diagnosa, dan pengguna default.
+    ```bash
+    php artisan db:seed
+    ```
 
-## Security Vulnerabilities
+9.  **Compile Frontend Assets:**
+    ```bash
+    npm run dev
+    # atau untuk produksi
+    # npm run prod
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+10. **Jalankan Server Pengembangan:**
+    ```bash
+    php artisan serve
+    ```
+    Aplikasi akan tersedia di `http://127.0.0.1:8000` (atau port lain yang ditampilkan).
 
-## License
+## Cara Penggunaan
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# rekam-medis-agefi" 
+Setelah instalasi, Anda dapat mengakses aplikasi melalui browser Anda.
+
+### Kredensial Login Default (setelah `php artisan db:seed`):
+
+*   **Admin (Dev Role):**
+    *   **Username:** `dev`
+    *   **Password:** `password`
+
+*   **Dokter (User Role):**
+    *   **Username:** `dokter`
+    *   **Password:** `password`
+
+### Struktur Navigasi (untuk peran Dev):
+
+*   **Beranda:** Dashboard utama.
+*   **Jadwal:** Manajemen jadwal pasien.
+*   **Riwayat:** Melihat riwayat tindakan dan diagnosa.
+*   **Laporan:** Menghasilkan laporan harian.
+*   **Data Master:**
+    *   **Pasien:** Manajemen data pasien.
+    *   **Dokter:** Manajemen data dokter.
+    *   **Tarif:** Manajemen tarif layanan.
+    *   **Layanan:** Manajemen jenis layanan.
+*   **Data Akun:**
+    *   **User:** Manajemen akun pengguna.
+
+### Struktur Navigasi (untuk peran User/Dokter):
+
+*   **Beranda:** Dashboard utama.
+*   **Jadwal:** Melihat jadwal yang terkait dengan dokter yang login, serta melakukan tindakan dan diagnosa.
+*   **Riwayat:** Melihat riwayat tindakan dan diagnosa.
+
+## Best Practices yang Diterapkan
+
+*   **Routing:** Penggunaan `Route::resource` dan penamaan rute (`name`) untuk struktur URL yang lebih bersih dan mudah dikelola.
+*   **Model & Migrasi:** Konsistensi antara definisi model dan skema database melalui migrasi.
+*   **Seeding & Factories:** Pemanfaatan Faker dan Factory untuk menghasilkan data dummy yang realistis, mempermudah pengembangan dan pengujian.
+*   **Blade Templates:** Penggunaan Blade templating engine untuk tampilan yang dinamis dan terstruktur.
+*   **Middleware:** Implementasi middleware `HakRole` untuk otorisasi berbasis peran.
+
+---

@@ -48,10 +48,10 @@
                                 <td>{{ $item->layanan->nama   }}</td>
                                 <td>Rp {{ number_format($item->nominal, 0, ',', '.') }}</td>
                                 <td nowrap>
-                                    <a href="/tarif/edit/{{ $item->id }}" class="btn btn-warning btn-sm">
+                                    <a href="{{ route('tarif.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form action="/tarif/delete/{{ $item->id }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('tarif.destroy', $item->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ?')">
@@ -81,7 +81,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="{{ url('/tarif/store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('tarif.store') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="col-12">

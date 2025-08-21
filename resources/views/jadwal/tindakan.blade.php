@@ -7,11 +7,11 @@
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">
-                <a href="{{ url('/jadwal') }}">
+                <a href="{{ route('jadwal.index') }}">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                 </a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ url('/jadwal') }}">Jadwal</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
         </ol>
 
         @if (session('notif'))
@@ -32,7 +32,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="{{ url('/jadwal/tindakan/up') }}" method="POST">
+                <form action="{{ route('jadwal.tindakan_up') }}" method="POST">
                     @csrf
 
                     {{-- Hidden input agar jadwal_id tetap terkirim --}}
@@ -64,7 +64,7 @@
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ url('/jadwal') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('jadwal.index') }}" class="btn btn-secondary">Kembali</a>
                     </div>
                 </form>
 

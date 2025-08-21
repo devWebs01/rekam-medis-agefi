@@ -7,11 +7,11 @@
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">
-                <a href="{{ url('/jadwal') }}">
+                <a href="{{ route('jadwal.index') }}">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                 </a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ url('/jadwal') }}">Jadwal</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
         </ol>
 
         @if (session('notif'))
@@ -75,7 +75,7 @@
 </style>
 
                     <div class="text-center">
-                        <a href="{{ url('/riwayat') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('riwayat.index') }}" class="btn btn-secondary">Kembali</a>
                     </div>
                 </form>
 

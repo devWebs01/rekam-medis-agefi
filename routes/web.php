@@ -33,57 +33,21 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth', 'HakRole:Dev,User']], function () {
-    Route::group(['prefix' => 'pasien'], function () {
-        Route::get('/', [PasienController::class, 'index']);
-        Route::post('/store', [PasienController::class, 'store']);
-        Route::get('/edit/{id}', [PasienController::class, 'edit']);
-        Route::post('/update/{id}/', [PasienController::class, 'update']);
-        Route::delete('/delete/{id}', [PasienController::class, 'delete']);
-    });
-    Route::group(['prefix' => 'dokter'], function () {
-        Route::get('/', [DokterController::class, 'index']);
-        Route::post('/store', [DokterController::class, 'store']);
-        Route::get('/edit/{id}', [DokterController::class, 'edit']);
-        Route::post('/update/{id}/', [DokterController::class, 'update']);
-        Route::delete('/delete/{id}', [DokterController::class, 'delete']);
-    });
-    Route::group(['prefix' => 'layanan'], function () {
-        Route::get('/', [LayananController::class, 'index']);
-        Route::post('/store', [LayananController::class, 'store']);
-        Route::get('/edit/{id}', [LayananController::class, 'edit']);
-        Route::post('/update/{id}/', [LayananController::class, 'update']);
-        Route::delete('/delete/{id}', [LayananController::class, 'delete']);
-    });
-    Route::group(['prefix' => 'tarif'], function () {
-        Route::get('/', [TarifController::class, 'index']);
-        Route::post('/store', [TarifController::class, 'store']);
-        Route::get('/edit/{id}', [TarifController::class, 'edit']);
-        Route::post('/update/{id}/', [TarifController::class, 'update']);
-        Route::delete('/delete/{id}', [TarifController::class, 'delete']);
-    });
-    Route::group(['prefix' => 'jadwal'], function () {
-        Route::get('/', [JadwalController::class, 'index']);
-        Route::post('/store', [JadwalController::class, 'store']);
-        Route::get('/edit/{id}', [JadwalController::class, 'edit']);
-        Route::post('/update/{id}/', [JadwalController::class, 'update']);
-        Route::delete('/delete/{id}', [JadwalController::class, 'delete']);
-        Route::get('/tindakan/{id}', [JadwalController::class, 'tindakan']);
-        Route::post('/tindakan/up', [JadwalController::class, 'tindakan_up']);
-        Route::get('/diagnosa/{id}', [JadwalController::class, 'diagnosa']);
-    });
-    Route::group(['prefix' => 'diagnosa'], function () {
-        Route::post('/store', [DiagnosaController::class, 'store']);
-    });
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('/', [UserController::class, 'index']);
-        Route::post('/store', [UserController::class, 'store']);
-        Route::get('/edit/{id}', [UserController::class, 'edit']);
-        Route::post('/update/{id}/', [UserController::class, 'update']);
-        Route::delete('/delete/{id}', [UserController::class, 'delete']);
-    });
-    Route::group(['prefix' => 'riwayat'], function () {
-        Route::get('/', [RiwayatController::class, 'index']);
-    });
+    Route::resource('pasien', PasienController::class);
+    Route::resource('dokter', DokterController::class);
+    Route::resource('layanan', LayananController::class);
+    Route::resource('tarif', TarifController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('jadwal', JadwalController::class);
+
+    Route::get('jadwal/tindakan/{id}', [JadwalController::class, 'tindakan'])->name('jadwal.tindakan');
+    Route::post('jadwal/tindakan/up', [JadwalController::class, 'tindakan_up'])->name('jadwal.tindakan_up');
+    Route::get('jadwal/diagnosa/{id}', [JadwalController::class, 'diagnosa'])->name('jadwal.diagnosa');
+
+    Route::post('diagnosa/store', [DiagnosaController::class, 'store'])->name('diagnosa.store');
+
+    Route::get('riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
+
     Route::group(['prefix' => 'laporan'], function () {
         Route::get('/', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('/harian', [LaporanController::class, 'harian'])->name('laporan.harian');

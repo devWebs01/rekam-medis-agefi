@@ -53,7 +53,7 @@
                                 <td>{{ $item->dokter->nama ??''}}</td>
                                 <td>{{ $item->username }}</td>
                                 <td width="15%" align="center">
-                                    <form action="/user/delete/{{ $item->id }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('user.destroy', $item->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ?')">
@@ -83,7 +83,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('/user/store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="col-12 col-sm-12">

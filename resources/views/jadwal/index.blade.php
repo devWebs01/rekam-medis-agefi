@@ -57,10 +57,10 @@
                                     </td>
 
                                     <td nowrap>
-                                        <a href="/jadwal/edit/{{ $item->uuid }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('jadwal.edit', $item->uuid) }}" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
-                                        <form action="/jadwal/delete/{{ $item->uuid }}" method="POST" style="display: inline;">
+                                        <form action="{{ route('jadwal.destroy', $item->uuid) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ?')">
@@ -113,11 +113,11 @@
                                         @if ($item->diagnosa)
                                         <span class="badge badge-success">Sudah Didiagnosa</span>
                                         <br>
-                                        <a href="/jadwal/diagnosa/{{ $item->uuid }}" class="btn btn-info btn-sm">
+                                        <a href="{{ route('jadwal.diagnosa', $item->uuid) }}" class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i> Lihat
                                         </a>
                                         @else
-                                        <a href="/jadwal/tindakan/{{ $item->uuid }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ route('jadwal.tindakan', $item->uuid) }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i> Tindakan
                                         </a>
                                         @endif
@@ -149,7 +149,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/jadwal/store') }}" method="POST">
+                    <form action="{{ route('jadwal.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="dokter_id">Dokter</label>

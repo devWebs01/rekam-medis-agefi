@@ -14,7 +14,6 @@ class JadwalController extends Controller
 {
     public function index()
     {
-
         $jadwal = Jadwal::with(['dokter', 'pasien', 'tarif.layanan'])->where('status', 'belum')->get();
         $dokter = Dokter::get();
         $pasien = Pasien::get();

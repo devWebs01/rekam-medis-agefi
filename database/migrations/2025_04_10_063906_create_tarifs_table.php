@@ -15,7 +15,8 @@ class CreateTarifsTable extends Migration
     {
         Schema::create('tarifs', function (Blueprint $table) {
             $table->id();
-            $table->string('layanan_id');
+            $table->unsignedBigInteger('layanan_id');
+            $table->foreign('layanan_id')->references('id')->on('layanans')->onDelete('cascade');
             $table->string('nominal');
             $table->timestamps();
         });

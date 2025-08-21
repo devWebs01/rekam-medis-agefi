@@ -16,9 +16,12 @@ class CreateJadwalsTable extends Migration
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->integer('pasien_id');
-            $table->integer('dokter_id');
-            $table->string('tarif_id');
+            $table->unsignedBigInteger('pasien_id');
+            $table->foreign('pasien_id')->references('id')->on('pasiens')->onDelete('cascade');
+            $table->unsignedBigInteger('dokter_id');
+            $table->foreign('dokter_id')->references('id')->on('dokters')->onDelete('cascade');
+            $table->unsignedBigInteger('tarif_id');
+            $table->foreign('tarif_id')->references('id')->on('tarifs')->onDelete('cascade');
             $table->date('tgl');
             $table->time('waktu');
             $table->enum('status', ['ok', 'belum']);

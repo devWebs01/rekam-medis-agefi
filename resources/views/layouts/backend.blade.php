@@ -10,10 +10,8 @@
     <title>Klinik Agefi Dental Care</title>
     <link href="" rel="icon">
     <link href="{{ asset('backend') }}/dist/css/styles.css" rel="stylesheet" />
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        crossorigin="anonymous" />
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" crossorigin="anonymous"></script> --}}
+    
+    <link href="{{ asset('backend/dist/css/form.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 
@@ -29,7 +27,9 @@
         <ul class="navbar-nav ml-auto ml-md-0">
             <li>
                 <a class="text-white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @auth
                     {{ Auth::user()->name }}
+                    @endauth
                 </a>
             </li>
         </ul>
@@ -50,40 +50,41 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Halaman Admin</div>
-                        <a class="nav-link" href="{{ url('home', []) }}">
+                        <a class="nav-link" href="{{ route('home') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                             Beranda
                         </a>
-                        <a class="nav-link" href="{{ url('jadwal', []) }}">
+                        <a class="nav-link" href="{{ route('jadwal.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
                             Jadwal
                         </a>
-                        </a><a class="nav-link" href="{{ url('/riwayat', []) }}">
+                        <a class="nav-link" href="{{ route('riwayat.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Riwayat
-                        </a></a><a class="nav-link" href="{{ url('/laporan', []) }}">
+                        </a>
+                        <a class="nav-link" href="{{ route('laporan.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
                             Laporan
                         </a>
                         <div class="sb-sidenav-menu-heading">Data Master</div>
-                        <a class="nav-link" href="{{ url('/pasien', []) }}">
+                        <a class="nav-link" href="{{ route('pasien.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Pasien
                         </a>
-                        <a class="nav-link" href="{{ url('/dokter', []) }}">
+                        <a class="nav-link" href="{{ route('dokter.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Dokter
                         </a>
-                        <a class="nav-link" href="{{ url('/tarif', []) }}">
+                        <a class="nav-link" href="{{ route('tarif.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa fa-info-circle"></i></div>
                             Tarif
                         </a>
-                        <a class="nav-link" href="{{ url('/layanan', []) }}">
+                        <a class="nav-link" href="{{ route('layanan.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Layanan
                         </a>
                         <div class="sb-sidenav-menu-heading">Data Akun</div>
-                        <a class="nav-link" href="{{ url('user', []) }}">
+                        <a class="nav-link" href="{{ route('user.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                             User
                         </a>
@@ -101,15 +102,16 @@
                     <div class="nav">
 
                         <div class="sb-sidenav-menu-heading">Halaman Dokter</div>
-                        <a class="nav-link" href="{{ url('home', []) }}">
+                        <a class="nav-link" href="{{ route('home') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                             Beranda
                         </a>
                         <div class="sb-sidenav-menu-heading">Data Master</div>
-                        <a class="nav-link" href="{{ url('/jadwal', []) }}">
+                        <a class="nav-link" href="{{ route('jadwal.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
                             Jadwal
-                        </a><a class="nav-link" href="{{ url('/riwayat', []) }}">
+                        </a>
+                        <a class="nav-link" href="{{ route('riwayat.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             Riwayat
                         </a>
@@ -127,7 +129,7 @@
 
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
-                    <div class="text-center">Copyright &copy; <strong>2025</strong></div>
+                    <div class="text-center">Copyright &copy; <strong>{{ date('Y') }}</strong></div>
                 </div>
             </footer>
         </div>
@@ -162,7 +164,7 @@
     {{-- End Logout --}}
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/form.js') }}" defer></script>
+    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="{{ asset('backend') }}/dist/js/scripts.js"></script>

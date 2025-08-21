@@ -56,10 +56,10 @@
                                 </td>
                                 <td>{{ $item->alamat }}</td>
                                 <td nowrap>
-                                    <a href="/pasien/edit/{{ $item->id }}" class="btn btn-warning btn-sm">
+                                    <a href="{{ route('pasien.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form action="/pasien/delete/{{ $item->id }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('pasien.destroy', $item->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ?')">
@@ -89,7 +89,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="{{ url('/pasien/store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('pasien.store') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="col-12">

@@ -6,9 +6,9 @@
         <h1 class="mt-4">Edit Jadwal</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">
-                <a href="{{ url('/jadwal') }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+                <a href="{{ route('jadwal.index') }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ url('/jadwal') }}">Jadwal</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
         </ol>
 
         @if (\Session::has('notif'))
@@ -29,7 +29,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="{{ url('/jadwal/update/' . $jadwal->uuid) }}" method="POST">
+                <form action="{{ route('jadwal.update', $jadwal->uuid) }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="dokter_id">Dokter</label>
@@ -76,7 +76,7 @@
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-warning">Update</button>
-                        <a href="{{ url('/jadwal') }}" class="btn btn-secondary">Batal</a>
+                        <a href="{{ route('jadwal.index') }}" class="btn btn-secondary">Batal</a>
                     </div>
                 </form>
             </div>

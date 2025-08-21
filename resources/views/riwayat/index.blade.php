@@ -54,7 +54,7 @@
                                     </small>
                                 </td>
                                 <td>
-                                    <a href="/jadwal/diagnosa/{{ $item->uuid }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('jadwal.diagnosa', $item->uuid) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-eye"></i> Lihat
                                     </a>
                                 </td>
@@ -99,7 +99,7 @@
                                     </small>
                                 </td>
                                 <td>
-                                    <a href="/jadwal/diagnosa/{{ $item->uuid }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('jadwal.diagnosa', $item->uuid) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-eye"></i> Lihat
                                     </a>
                                 </td>

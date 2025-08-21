@@ -6,9 +6,9 @@
         <h1 class="mt-4">Edit Profil</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
-                <a href="{{ url('home') }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+                <a href="{{ route('home') }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Edit Profil</li>
         </ol>
 
@@ -33,7 +33,7 @@
         <!-- form -->
         <div class="card mb-4">
             <div class="card-body">
-                <form action="/user/update/{{ $profil->id }}/" method="POST" enctype="multipart/form-data"
+                <form action="{{ route('user.update', $profil->id) }}" method="POST" enctype="multipart/form-data"
                     class="needs-validation" novalidate="">
                     {{ csrf_field() }}
 
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <a href="{{ url('user') }}" class="btn btn-secondary">
+                        <a href="{{ route('user.index') }}" class="btn btn-secondary">
                             <i class="fa fa-arrow-left"></i> Kembali
                         </a>
                         <input type="submit" class="btn btn-success" value="Update">
