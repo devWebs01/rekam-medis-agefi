@@ -35,8 +35,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     @if (auth()->user()->role == "Dev")
-                        <table class="table table-bordered text-nowrap text-center" id="dataTable" width="100%"
-                            cellspacing="0">
+                        <table class="table table-bordered text-nowrap text-center" id="dataTable" width="100%">
                             <thead class="text-center">
                                 <tr>
                                     <th width="5%">No</th>
@@ -88,8 +87,7 @@
                             </tbody>
                         </table>
                     @elseif (auth()->user()->role == "User")
-                        <table class="table table-bordered text-nowrap text-center" id="dataTable" width="100%"
-                            cellspacing="0">
+                        <table class="table table-bordered text-nowrap text-center" id="dataTable" width="100%">
                             <thead class="text-center">
                                 <tr>
                                     <th width="5%">No</th>

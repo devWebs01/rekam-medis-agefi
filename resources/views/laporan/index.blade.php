@@ -83,7 +83,7 @@
                             var tableHtml =
                                 '<div class="card mb-4"><div class="card-header"><div class="d-flex justify-content-between align-items-center"><span><i class="fas fa-table me-1"></i> Hasil Laporan</span><a href="' +
                                 printUrl +
-                                '" target="_blank" class="btn btn-success"><i class="fas fa-print me-2"></i> Cetak Laporan</a></div></div><div class="card-body"><div class="table-responsive text-nowrap text-center"><table class="table table-bordered" width="100%" cellspacing="0"><thead><tr class="text-center"><th>No</th><th>Tanggal</th><th>Pasien</th><th>Dokter</th><th>Layanan</th><th>Nominal</th></tr></thead><tbody>';
+                                '" target="_blank" class="btn btn-success"><i class="fas fa-print me-2"></i> Cetak Laporan</a></div></div><div class="card-body"><div class="table-responsive text-nowrap text-center"><table class="table table-bordered" width="100%" ><thead><tr class="text-center"><th>No</th><th>Tanggal</th><th>Pasien</th><th>Dokter</th><th>Layanan</th><th>Nominal</th></tr></thead><tbody>';
                             var totalPendapatan = 0;
 
                             $.each(data, function(index, item) {

@@ -30,11 +30,11 @@
                                             class="form-control {{ $errors->has("username") || $errors->has("email") ? "is-invalid" : "" }}"
                                             name="login" value="{{ old("username") ? old("username") : old("email") }}"
                                             placeholder="Username" />
-                                        @if ($errors->has("username") || $errors->has("email"))
+                                        @error("username")
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first("username") ? $errors->first("username") : $errors->first("email") }}</strong>
+                                                <strong>{{ $message }}</strong>
                                             </span>
-                                        @endif
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -46,8 +46,10 @@
                                             class="form-control @error("password") is-invalid @enderror" name="password"
                                             required autocomplete="current-password">
                                         @error("password")
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                            <span class="invalid-feedback">
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             </span>
                                         @enderror
                                     </div>

@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <form action="{{ route("user.store") }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="form-row">
                         <div class="col-12 col-sm-12">
                             <label class="small mb-1" for="guru_id">Nama Dokter</label>
@@ -33,8 +33,9 @@
                             <input type="password" name="password" class="form-control" placeholder="Masukan Password">
                         </div>
                     </div>
-                    <div class="form-group d-flex align-items-center justify-content-between mb-0">
-                        <input type="submit" class="btn btn-primary" value="Simpan">
+                    <div class="form-group d-flex justify-content-end mt-4">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary ms-2">Simpan</button>
                     </div>
                 </form>
             </div>

@@ -36,8 +36,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered text-nowrap text-center text-nowrap" id="dataTable" width="100%"
-                        cellspacing="0">
+                    <table class="table table-bordered text-nowrap text-center text-nowrap" id="dataTable" width="100%">
                         <thead class="text-center">
                             <tr>
                                 <th width="5%">No</th>

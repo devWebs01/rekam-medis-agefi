@@ -1,64 +1,62 @@
-@extends('layouts.backend')
+@extends("layouts.app")
 
-@section('content')
-<main>
-    <div class="container-fluid">
+@section("content")
+    <div class="container-fluid px-4">
         <h1 class="mt-4">Edit Jadwal</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">
-                <a href="{{ route('jadwal.index') }}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-            </li>
-            <li class="breadcrumb-item"><a href="{{ route('jadwal.index') }}">Jadwal</a></li>
+            <li class="breadcrumb-item"><a href="{{ route("jadwal.index") }}">Jadwal</a></li>
+            <li class="breadcrumb-item active">Edit Data</li>
         </ol>
 
-        @if (\Session::has('notif'))
-        <div class="alert alert-primary text-center">
-            {!! \Session::get('notif') !!}
-        </div>
-        @endif
-
         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
         <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-edit me-1"></i>
+                Form Edit Jadwal
+            </div>
             <div class="card-body">
-                <form action="{{ route('jadwal.update', $jadwal->uuid) }}" method="POST">
+                <form action="{{ route("jadwal.update", $jadwal->uuid) }}" method="POST">
                     @csrf
-                    <div class="form-group">
+                    @method("PUT")
+                    <div class="form-group mb-3">
                         <label for="dokter_id">Dokter</label>
                         <select name="dokter_id" class="form-control" required>
                             <option value="">-- Pilih Dokter --</option>
                             @foreach ($dokter as $d)
-                            <option value="{{ $d->id }}" {{ $jadwal->dokter_id == $d->id ? 'selected' : '' }}>{{ $d->nama }}</option>
+                                <option value="{{ $d->id }}" {{ $jadwal->dokter_id == $d->id ? "selected" : "" }}>
+                                    {{ $d->nama }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="pasien_id">Pasien</label>
                         <select name="pasien_id" class="form-control" required>
                             <option value="">-- Pilih Pasien --</option>
                             @foreach ($pasien as $p)
-                            <option value="{{ $p->id }}" {{ $jadwal->pasien_id == $p->id ? 'selected' : '' }}>{{ $p->nama }}</option>
+                                <option value="{{ $p->id }}" {{ $jadwal->pasien_id == $p->id ? "selected" : "" }}>
+                                    {{ $p->nama }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="tarif_id">Tarif</label>
+                    <div class="form-group mb-3">
+                        <label for="tarif_id">Layanan</label>
                         <select name="tarif_id" class="form-control" required>
-                            <option value="">-- Pilih Tarif --</option>
+                            <option value="">-- Pilih Layanan --</option>
                             @foreach ($tarif as $t)
-                            <option value="{{ $t->id }}" {{ $jadwal->tarif_id == $t->id ? 'selected' : '' }}>
-                                {{ $t->layanan->nama }}
-                            </option>
+                                <option value="{{ $t->id }}" {{ $jadwal->tarif_id == $t->id ? "selected" : "" }}>
+                                    {{ $t->layanan->nama }} (Rp {{ number_format($t->nominal, 0, ",", ".") }})
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -70,18 +68,17 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="waktu">Waktu</label>
-                            <input type="time" name="waktu" value="{{ $jadwal->waktu }}" class="form-control" required>
+                            <input type="time" name="waktu" value="{{ $jadwal->waktu }}" class="form-control"
+                                required>
                         </div>
                     </div>
 
-                    <div class="text-center">
+                    <div class="d-flex justify-content-end mt-4">
                         <button type="submit" class="btn btn-warning">Update</button>
-                        <a href="{{ route('jadwal.index') }}" class="btn btn-secondary">Batal</a>
+                        <a href="{{ route("jadwal.index") }}" class="btn btn-secondary ml-2">Batal</a>
                     </div>
                 </form>
             </div>
         </div>
-
     </div>
-</main>
 @endsection

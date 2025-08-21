@@ -12,7 +12,7 @@
             <div class="modal-body">
 
                 <form action="{{ route("layanan.store") }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="form-row">
                         <div class="col-12">
                             <label for="nama"><b>Kode Layanan</b></label>
@@ -28,9 +28,9 @@
                                 placeholder="Masukkan Nama Layanan" required>
                         </div>
                     </div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    <div class="d-flex justify-content-end mt-4">
                         <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary ms-2">Simpan</button>
                     </div>
                 </form>
 
