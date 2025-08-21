@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         $dokter = Dokter::get();
-        $data = User::where('role', 'User')->get();
+        $data = User::with('dokter')->where('role', 'User')->get();
 
         return view('user.index', compact('data', 'dokter'));
     }

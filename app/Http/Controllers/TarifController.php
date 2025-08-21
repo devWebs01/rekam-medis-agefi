@@ -10,7 +10,7 @@ class TarifController extends Controller
 {
     public function index()
     {
-        $data = Tarif::get();
+        $data = Tarif::with('layanan')->get();
         $layanan = Layanan::get();
 
         return view('tarif.index', compact('layanan', 'data'));

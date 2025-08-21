@@ -15,11 +15,11 @@ class JadwalController extends Controller
     public function index()
     {
 
-        $jadwal = Jadwal::where('status', 'belum')->get();
+        $jadwal = Jadwal::with(['dokter', 'pasien', 'tarif.layanan'])->where('status', 'belum')->get();
         $dokter = Dokter::get();
         $pasien = Pasien::get();
         $tarif = Tarif::get();
-        $jadwal_dokter = Jadwal::with('diagnosa')->where('status', 'belum')->where('dokter_id', Auth::user()->dokter_id)->get();
+        $jadwal_dokter = Jadwal::with(['diagnosa', 'pasien', 'dokter', 'tarif.layanan'])->where('status', 'belum')->where('dokter_id', Auth::user()->dokter_id)->get();
 
         return view('jadwal.index', compact('dokter', 'pasien', 'jadwal', 'tarif', 'jadwal_dokter'));
     }
@@ -63,7 +63,7 @@ class JadwalController extends Controller
 
     public function edit($id)
     {
-        $jadwal = Jadwal::where('uuid', $id)->firstOrFail();
+        $jadwal = Jadwal::with(['pasien', 'dokter', 'tarif'])->where('uuid', $id)->firstOrFail();
         $dokter = Dokter::all();
         $pasien = Pasien::all();
         $tarif = Tarif::with('layanan')->get();

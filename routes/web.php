@@ -1,5 +1,16 @@
 <?php
 
+use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\DokterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\PasienController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\TarifController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,62 +30,62 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth', 'HakRole:Dev,User']], function () {
     Route::group(['prefix' => 'pasien'], function () {
-        Route::get('/', [App\Http\Controllers\PasienController::class, 'index']);
-        Route::post('/store', [App\Http\Controllers\PasienController::class, 'store']);
-        Route::get('/edit/{id}', [App\Http\Controllers\PasienController::class, 'edit']);
-        Route::post('/update/{id}/', [App\Http\Controllers\PasienController::class, 'update']);
-        Route::delete('/delete/{id}', [App\Http\Controllers\PasienController::class, 'delete']);
+        Route::get('/', [PasienController::class, 'index']);
+        Route::post('/store', [PasienController::class, 'store']);
+        Route::get('/edit/{id}', [PasienController::class, 'edit']);
+        Route::post('/update/{id}/', [PasienController::class, 'update']);
+        Route::delete('/delete/{id}', [PasienController::class, 'delete']);
     });
     Route::group(['prefix' => 'dokter'], function () {
-        Route::get('/', [App\Http\Controllers\DokterController::class, 'index']);
-        Route::post('/store', [App\Http\Controllers\DokterController::class, 'store']);
-        Route::get('/edit/{id}', [App\Http\Controllers\DokterController::class, 'edit']);
-        Route::post('/update/{id}/', [App\Http\Controllers\DokterController::class, 'update']);
-        Route::delete('/delete/{id}', [App\Http\Controllers\DokterController::class, 'delete']);
+        Route::get('/', [DokterController::class, 'index']);
+        Route::post('/store', [DokterController::class, 'store']);
+        Route::get('/edit/{id}', [DokterController::class, 'edit']);
+        Route::post('/update/{id}/', [DokterController::class, 'update']);
+        Route::delete('/delete/{id}', [DokterController::class, 'delete']);
     });
     Route::group(['prefix' => 'layanan'], function () {
-        Route::get('/', [App\Http\Controllers\LayananController::class, 'index']);
-        Route::post('/store', [App\Http\Controllers\LayananController::class, 'store']);
-        Route::get('/edit/{id}', [App\Http\Controllers\LayananController::class, 'edit']);
-        Route::post('/update/{id}/', [App\Http\Controllers\LayananController::class, 'update']);
-        Route::delete('/delete/{id}', [App\Http\Controllers\LayananController::class, 'delete']);
+        Route::get('/', [LayananController::class, 'index']);
+        Route::post('/store', [LayananController::class, 'store']);
+        Route::get('/edit/{id}', [LayananController::class, 'edit']);
+        Route::post('/update/{id}/', [LayananController::class, 'update']);
+        Route::delete('/delete/{id}', [LayananController::class, 'delete']);
     });
     Route::group(['prefix' => 'tarif'], function () {
-        Route::get('/', [App\Http\Controllers\TarifController::class, 'index']);
-        Route::post('/store', [App\Http\Controllers\TarifController::class, 'store']);
-        Route::get('/edit/{id}', [App\Http\Controllers\TarifController::class, 'edit']);
-        Route::post('/update/{id}/', [App\Http\Controllers\TarifController::class, 'update']);
-        Route::delete('/delete/{id}', [App\Http\Controllers\TarifController::class, 'delete']);
+        Route::get('/', [TarifController::class, 'index']);
+        Route::post('/store', [TarifController::class, 'store']);
+        Route::get('/edit/{id}', [TarifController::class, 'edit']);
+        Route::post('/update/{id}/', [TarifController::class, 'update']);
+        Route::delete('/delete/{id}', [TarifController::class, 'delete']);
     });
     Route::group(['prefix' => 'jadwal'], function () {
-        Route::get('/', [App\Http\Controllers\JadwalController::class, 'index']);
-        Route::post('/store', [App\Http\Controllers\JadwalController::class, 'store']);
-        Route::get('/edit/{id}', [App\Http\Controllers\JadwalController::class, 'edit']);
-        Route::post('/update/{id}/', [App\Http\Controllers\JadwalController::class, 'update']);
-        Route::delete('/delete/{id}', [App\Http\Controllers\JadwalController::class, 'delete']);
-        Route::get('/tindakan/{id}', [App\Http\Controllers\JadwalController::class, 'tindakan']);
-        Route::post('/tindakan/up', [App\Http\Controllers\JadwalController::class, 'tindakan_up']);
-        Route::get('/diagnosa/{id}', [App\Http\Controllers\JadwalController::class, 'diagnosa']);
+        Route::get('/', [JadwalController::class, 'index']);
+        Route::post('/store', [JadwalController::class, 'store']);
+        Route::get('/edit/{id}', [JadwalController::class, 'edit']);
+        Route::post('/update/{id}/', [JadwalController::class, 'update']);
+        Route::delete('/delete/{id}', [JadwalController::class, 'delete']);
+        Route::get('/tindakan/{id}', [JadwalController::class, 'tindakan']);
+        Route::post('/tindakan/up', [JadwalController::class, 'tindakan_up']);
+        Route::get('/diagnosa/{id}', [JadwalController::class, 'diagnosa']);
     });
     Route::group(['prefix' => 'diagnosa'], function () {
-        Route::post('/store', [App\Http\Controllers\DiagnosaController::class, 'store']);
+        Route::post('/store', [DiagnosaController::class, 'store']);
     });
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/', [App\Http\Controllers\UserController::class, 'index']);
-        Route::post('/store', [App\Http\Controllers\UserController::class, 'store']);
-        Route::get('/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
-        Route::post('/update/{id}/', [App\Http\Controllers\UserController::class, 'update']);
-        Route::delete('/delete/{id}', [App\Http\Controllers\UserController::class, 'delete']);
+        Route::get('/', [UserController::class, 'index']);
+        Route::post('/store', [UserController::class, 'store']);
+        Route::get('/edit/{id}', [UserController::class, 'edit']);
+        Route::post('/update/{id}/', [UserController::class, 'update']);
+        Route::delete('/delete/{id}', [UserController::class, 'delete']);
     });
     Route::group(['prefix' => 'riwayat'], function () {
-        Route::get('/', [App\Http\Controllers\RiwayatController::class, 'index']);
+        Route::get('/', [RiwayatController::class, 'index']);
     });
     Route::group(['prefix' => 'laporan'], function () {
-        Route::get('/', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');
-        Route::get('/harian', [App\Http\Controllers\LaporanController::class, 'harian'])->name('laporan.harian');
+        Route::get('/', [LaporanController::class, 'index'])->name('laporan.index');
+        Route::get('/harian', [LaporanController::class, 'harian'])->name('laporan.harian');
     });
 });

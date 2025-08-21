@@ -10,4 +10,9 @@ class Layanan extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function tarif()
+    {
+        return $this->hasMany(Tarif::class);
+    }
 }

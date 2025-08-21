@@ -10,4 +10,9 @@ class Pasien extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function jadwal()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }
