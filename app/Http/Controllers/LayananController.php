@@ -16,13 +16,13 @@ class LayananController extends Controller
 
     public function store(Request $request)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute  wajib di isi !!',
         ];
         $this->validate($request, [
             'kode' => 'required',
             'nama' => 'required',
-        ], $massage);
+        ], $messages);
         Layanan::create([
             'kode' => $request->kode,
             'nama' => $request->nama,
@@ -40,13 +40,13 @@ class LayananController extends Controller
 
     public function update(Request $request, $id)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute  wajib di isi !!',
         ];
         $this->validate($request, [
             'kode' => 'required',
             'nama' => 'required',
-        ], $massage);
+        ], $messages);
         $data = Layanan::where('id', $id)->firstOrFail();
         $data->update($request->all());
 

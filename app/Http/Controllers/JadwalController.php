@@ -26,7 +26,7 @@ class JadwalController extends Controller
 
     public function store(Request $request)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute wajib di isi !!',
         ];
 
@@ -36,7 +36,7 @@ class JadwalController extends Controller
             'tarif_id' => 'required',
             'tgl' => 'required',
             'waktu' => 'required',
-        ], $massage);
+        ], $messages);
 
         $existingSchedule = Jadwal::where('dokter_id', $request->dokter_id)
             ->where('tgl', $request->tgl)
@@ -73,7 +73,7 @@ class JadwalController extends Controller
 
     public function update(Request $request, $id)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute  wajib di isi !!',
         ];
         $this->validate($request, [
@@ -82,7 +82,7 @@ class JadwalController extends Controller
             'tarif_id' => 'required',
             'tgl' => 'required',
             'waktu' => 'required',
-        ], $massage);
+        ], $messages);
         $data = Jadwal::where('uuid', $id)->firstOrFail();
         $data->update($request->all());
 
@@ -106,14 +106,14 @@ class JadwalController extends Controller
 
     public function tindakan_up(Request $request)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute wajib diisi !!',
         ];
 
         $this->validate($request, [
             'hasil' => 'required',
             'jadwal_id' => 'required|exists:jadwals,id',
-        ], $massage);
+        ], $messages);
         Diagnosa::create([
             'jadwal_id' => $request->jadwal_id,
             'hasil' => $request->hasil,

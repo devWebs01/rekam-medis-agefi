@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dokter;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,21 +19,22 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute  wajib di isi !!',
+            'unique' => ':attribute sudah terdaftar',
         ];
 
         $this->validate($request, [
-            'username' => 'required|min:4',
+            'username' => 'required|min:4|unique:users,username',
             'password' => 'required|min:4|max:12',
             'dokter_id' => 'required',
-        ], $massage);
-        $user = new \App\Models\User;
-        $user->role = 'User';
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->dokter_id = $request->dokter_id;
-        $user->save();
+        ], $messages);
+        User::create([
+            'role' => 'User',
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'dokter_id' => $request->dokter_id,
+        ]);
 
         return back()->with('notif', 'Akun Telah Tergistrasi');
     }
@@ -46,15 +48,15 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute  wajib di isi !!',
         ];
 
         $this->validate($request, [
             'password' => 'required',
-        ], $massage);
-        $user = \App\Models\User::find($id);
-        $user->password = bcrypt($request->password);
+        ], $messages);
+        $user = User::find($id);
+        $user->password = Hash::make($request->password);
         $user->save();
 
         return redirect('/home')->with('notif', 'Data Telah Di Update');

@@ -57,10 +57,13 @@
                                     <a href="/dokter/edit/{{ $item->id }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <a href="/dokter/delete/{{ $item->id }}" class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Anda yakin ingin menghapus ?')">
-                                        <i class="fa fa-trash" aria-hidden="true"></i> Hapus
-                                    </a>
+                                    <form action="/dokter/delete/{{ $item->id }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus ?')">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Hapus
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

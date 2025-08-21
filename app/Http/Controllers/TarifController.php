@@ -47,13 +47,13 @@ class TarifController extends Controller
 
     public function update(Request $request, $id)
     {
-        $massage = [
+        $messages = [
             'required' => ':attribute  wajib di isi !!',
         ];
         $this->validate($request, [
             'layanan_id' => 'required',
             'nominal' => 'required',
-        ], $massage);
+        ], $messages);
         $data = Tarif::where('id', $id)->firstOrFail();
         $data->update($request->all());
 
