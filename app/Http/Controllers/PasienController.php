@@ -10,8 +10,10 @@ class PasienController extends Controller
     public function index()
     {
         $data = Pasien::get();
+
         return view('pasien.index', ['data' => $data]);
     }
+
     public function store(Request $request)
     {
         $messages = [
@@ -31,12 +33,14 @@ class PasienController extends Controller
             'wa' => $request->wa,
             'jk' => $request->jk,
         ]);
+
         return redirect('pasien')->with('notif', 'Data Berhasi di Tambah');
     }
 
     public function edit($id)
     {
         $data = Pasien::where('id', $id)->firstOrFail();
+
         return view('pasien.edit', compact('data'));
     }
 
@@ -54,6 +58,7 @@ class PasienController extends Controller
         ], $messages);
         $data = Pasien::where('id', $id)->firstOrFail();
         $data->update($request->all());
+
         return redirect('/pasien')->with('notif', 'Data Berhasil di Edit');
     }
 
@@ -61,6 +66,7 @@ class PasienController extends Controller
     {
         $data = Pasien::where('id', $id)->firstOrFail();
         $data->delete();
+
         return redirect('pasien')->with('notif', 'Data Berhasil di Hapus');
     }
 }

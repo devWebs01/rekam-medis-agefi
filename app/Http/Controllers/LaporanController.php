@@ -11,6 +11,7 @@ class LaporanController extends Controller
     {
         return view('laporan.index');
     }
+
     public function harian(Request $request)
     {
         $request->validate([

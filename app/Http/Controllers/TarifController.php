@@ -12,14 +12,16 @@ class TarifController extends Controller
     {
         $data = Tarif::get();
         $layanan = Layanan::get();
+
         return view('tarif.index', compact('layanan', 'data'));
     }
+
     public function store(Request $request)
     {
         $messages = [
             'required' => ':attribute wajib diisi !!',
             'numeric' => ':attribute harus berupa angka !!',
-            'min' => ':attribute tidak boleh kurang dari :min !!'
+            'min' => ':attribute tidak boleh kurang dari :min !!',
         ];
 
         $this->validate($request, [
@@ -39,6 +41,7 @@ class TarifController extends Controller
     {
         $layanan = Layanan::get();
         $data = Tarif::where('id', $id)->firstOrFail();
+
         return view('tarif.edit', compact('data', 'layanan'));
     }
 
@@ -53,6 +56,7 @@ class TarifController extends Controller
         ], $massage);
         $data = Tarif::where('id', $id)->firstOrFail();
         $data->update($request->all());
+
         return redirect('/tarif')->with('notif', 'Data Berhasil di Edit');
     }
 
@@ -60,6 +64,7 @@ class TarifController extends Controller
     {
         $data = Tarif::where('id', $id)->firstOrFail();
         $data->delete();
+
         return redirect('/tarif')->with('notif', 'Data Berhasil di Hapus');
     }
 }

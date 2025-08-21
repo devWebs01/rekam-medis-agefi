@@ -19,7 +19,9 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
     protected $username;
+
     /**
      * Where to redirect users after login.
      *

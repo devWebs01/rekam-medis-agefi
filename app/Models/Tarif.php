@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tarif extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     public function layanan()

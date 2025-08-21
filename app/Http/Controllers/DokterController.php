@@ -10,8 +10,10 @@ class DokterController extends Controller
     public function index()
     {
         $data = Dokter::get();
+
         return view('dokter.index', ['data' => $data]);
     }
+
     public function store(Request $request)
     {
         $messages = [
@@ -28,12 +30,14 @@ class DokterController extends Controller
             'alamat' => $request->alamat,
             'wa' => $request->wa,
         ]);
+
         return redirect('/dokter')->with('notif', 'Data Berhasi di Tambah');
     }
 
     public function edit($id)
     {
         $data = Dokter::where('id', $id)->firstOrFail();
+
         return view('dokter.edit', compact('data'));
     }
 
@@ -50,6 +54,7 @@ class DokterController extends Controller
         ], $messages);
         $data = Dokter::where('id', $id)->firstOrFail();
         $data->update($request->all());
+
         return redirect('/dokter')->with('notif', 'Data Berhasil di Edit');
     }
 
@@ -57,6 +62,7 @@ class DokterController extends Controller
     {
         $data = Dokter::where('id', $id)->firstOrFail();
         $data->delete();
+
         return redirect('/dokter')->with('notif', 'Data Berhasil di Hapus');
     }
 }

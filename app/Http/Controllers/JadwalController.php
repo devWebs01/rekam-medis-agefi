@@ -19,8 +19,10 @@ class JadwalController extends Controller
         $pasien = Pasien::get();
         $tarif = Tarif::get();
         $jadwal_dokter = Jadwal::with('diagnosa')->where('status', 'belum')->where('dokter_id', \Auth::user()->dokter_id)->get();
+
         return view('jadwal.index', compact('dokter', 'pasien', 'jadwal', 'tarif', 'jadwal_dokter'));
     }
+
     public function store(Request $request)
     {
         $massage = [
@@ -64,6 +66,7 @@ class JadwalController extends Controller
         $dokter = Dokter::all();
         $pasien = Pasien::all();
         $tarif = Tarif::with('layanan')->get();
+
         return view('jadwal.edit', compact('jadwal', 'dokter', 'pasien', 'tarif'));
     }
 
@@ -81,6 +84,7 @@ class JadwalController extends Controller
         ], $massage);
         $data = Jadwal::where('uuid', $id)->firstOrFail();
         $data->update($request->all());
+
         return redirect('/jadwal')->with('notif', 'Data Berhasil di Edit');
     }
 
@@ -88,14 +92,17 @@ class JadwalController extends Controller
     {
         $data = Jadwal::where('uuid', $id)->firstOrFail();
         $data->delete();
+
         return redirect('/jadwal')->with('notif', 'Data Berhasil di Hapus');
     }
 
     public function tindakan($id)
     {
         $jadwal = Jadwal::where('uuid', $id)->firstOrFail();
+
         return view('jadwal.tindakan', compact('jadwal'));
     }
+
     public function tindakan_up(Request $request)
     {
         $massage = [
@@ -111,12 +118,14 @@ class JadwalController extends Controller
             'hasil' => $request->hasil,
         ]);
         Jadwal::where('id', $request->jadwal_id)->update(['status' => 'ok']);
+
         return redirect('/riwayat')->with('notif', 'Data Berhasi di Tambah');
     }
-    public function diagnosa($id)
-{
-    $jadwal = Jadwal::with(['pasien', 'dokter', 'diagnosa'])->where('uuid', $id)->firstOrFail();
-    return view('jadwal.diagnosa', compact('jadwal'));
-}
 
+    public function diagnosa($id)
+    {
+        $jadwal = Jadwal::with(['pasien', 'dokter', 'diagnosa'])->where('uuid', $id)->firstOrFail();
+
+        return view('jadwal.diagnosa', compact('jadwal'));
+    }
 }
