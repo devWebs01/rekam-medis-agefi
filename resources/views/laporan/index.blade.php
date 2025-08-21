@@ -1,51 +1,52 @@
-@extends('layouts.backend')
+@extends('layouts.app')
 
 @section('content')
-<main>
-    <div class="container-fluid">
-        <h1 class="mt-4">Laporan</h1>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Laporan</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Filter Laporan</li>
+    </ol>
 
-        <!-- Notifikasi -->
-        @if (\Session::has('notif'))
-        <div class="alert alert-primary" align="center">
+    <!-- Notifikasi -->
+    @if (\Session::has('notif'))
+        <div class="alert alert-primary" role="alert">
             {!! \Session::get('notif') !!}
         </div>
-        @endif
+    @endif
 
-        <!-- Error -->
-        @if (count($errors) > 0)
+    <!-- Error -->
+    @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                    <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
-        @endif
+    @endif
 
-        <div class="card mb-4">
-            <div class="card-body">
-                <form action="{{ route('laporan.harian') }}" target="_blank" method="GET">
-                    <div class="form-row align-items-end">
-                        <div class="form-group col-md-4">
-                            <label for="tanggal_awal">Tanggal Awal</label>
-                            <input type="date" class="form-control" name="tanggal_awal"
-                                value="{{ request('tanggal_awal') }}" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="tanggal_akhir">Tanggal Akhir</label>
-                            <input type="date" class="form-control" name="tanggal_akhir"
-                                value="{{ request('tanggal_akhir') }}" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <button type="submit" class="btn btn-primary">Lihat</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-filter me-1"></i>
+            Filter Berdasarkan Tanggal
         </div>
-
+        <div class="card-body">
+            <form action="{{ route('laporan.harian') }}" target="_blank" method="GET">
+                <div class="row align-items-end">
+                    <div class="col-md-4 mb-3">
+                        <label for="tanggal_awal">Tanggal Awal</label>
+                        <input type="date" class="form-control" name="tanggal_awal" value="{{ request('tanggal_awal') }}" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="tanggal_akhir">Tanggal Akhir</label>
+                        <input type="date" class="form-control" name="tanggal_akhir" value="{{ request('tanggal_akhir') }}" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <button type="submit" class="btn btn-primary w-100">Lihat Laporan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</main>
+</div>
 @endsection

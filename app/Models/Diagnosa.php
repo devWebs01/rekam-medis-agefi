@@ -15,7 +15,7 @@ class Diagnosa extends Model
 
     protected $guarded = [];
 
-    public function jadwal(): BelongsTo 
+    public function jadwal(): BelongsTo
     {
         return $this->belongsTo(Jadwal::class);
     }

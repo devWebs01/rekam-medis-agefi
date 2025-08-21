@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Diagnosa;
 use App\Models\Dokter;
+use App\Models\Jadwal;
 use App\Models\Layanan;
 use App\Models\Pasien;
 use App\Models\Tarif;
-use App\Models\Jadwal;
-use App\Models\Diagnosa;
 use App\Models\User; // Assuming User model is also seeded
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;

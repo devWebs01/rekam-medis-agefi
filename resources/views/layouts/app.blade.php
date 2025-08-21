@@ -1,33 +1,40 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        @include("layouts.partials._styles")
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+            * {
+                font-family: "Poppins", sans-serif;
+                font-weight: 500;
+                font-style: normal;
+            }
+        </style>
+    </head>
 
-    <title>Klinik Agefi Dental Care</title>
+    <body class="sb-nav-fixed">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+        @include("layouts.partials._topbar")
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <div id="layoutSidenav">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
+            @include("layouts.partials._sidebar")
 
-<body>
-    <div id="app">
+            <div id="layoutSidenav_content">
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
+                <main>
+                    @yield("content")
+                </main>
+
+                @include("layouts.partials._footer")
+
+            </div>
+        </div>
+
+        @include("layouts.partials._scripts")
+
+    </body>
 
 </html>

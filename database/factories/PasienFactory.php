@@ -24,7 +24,7 @@ class PasienFactory extends Factory
         return [
             'nama' => $this->faker->name(),
             'alamat' => $this->faker->address(),
-            'wa' => '62' . $this->faker->unique()->randomNumber(9, true), // Indonesian phone number format
+            'wa' => '62'.$this->faker->unique()->randomNumber(9, true), // Indonesian phone number format
             'jk' => $this->faker->randomElement(['Laki-Laki', 'Perempuan']),
         ];
     }

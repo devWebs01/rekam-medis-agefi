@@ -22,8 +22,8 @@ class LayananFactory extends Factory
     public function definition()
     {
         return [
-            'kode' => $this->faker->unique()->word() . $this->faker->randomNumber(3, true),
-            'nama' => $this->faker->unique()->word() . ' Service',
+            'kode' => $this->faker->unique()->word().$this->faker->randomNumber(3, true),
+            'nama' => $this->faker->unique()->word().' Service',
         ];
     }
 }

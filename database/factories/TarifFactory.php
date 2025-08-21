@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Tarif;
-use App\Models\Layanan; // Import Layanan model
+use App\Models\Layanan;
+use App\Models\Tarif; // Import Layanan model
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TarifFactory extends Factory

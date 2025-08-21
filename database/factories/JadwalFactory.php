@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Dokter;
 use App\Models\Jadwal;
 use App\Models\Pasien;
-use App\Models\Dokter;
 use App\Models\Tarif;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str; // For UUID

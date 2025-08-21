@@ -24,7 +24,7 @@ class DokterFactory extends Factory
         return [
             'nama' => $this->faker->name(),
             'alamat' => $this->faker->address(),
-            'wa' => '62' . $this->faker->unique()->randomNumber(9, true),
+            'wa' => '62'.$this->faker->unique()->randomNumber(9, true),
         ];
     }
 }

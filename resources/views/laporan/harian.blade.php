@@ -37,7 +37,8 @@
             @if (count($jadwals))
                 <div id="laporan-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered text-nowrap table-hover table-striped">
+                        <table
+                            class="table table-bordered text-nowrap text-center text-nowrap table-hover table-striped">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>No</th>
