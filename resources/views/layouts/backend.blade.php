@@ -27,9 +27,16 @@
 
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="">AGEFI</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
-                    class="fas fa-bars"></i></button>
+            <a class="navbar-brand" href="">
+                <div class="d-flex">
+                    <img src="{{ asset("backend/assets/img/logo.png") }}" alt="logo"
+                        style="width: 50px; height: 50px;;">
+                    <span class="font-weight-bold h3 pt-1 mt-2">AGEFI</span>
+                </div>
+            </a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+            </button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             </form>
