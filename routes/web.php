@@ -51,5 +51,6 @@ Route::group(['middleware' => ['auth', 'HakRole:Dev,User']], function () {
     Route::group(['prefix' => 'laporan'], function () {
         Route::get('/', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('/harian', [LaporanController::class, 'harian'])->name('laporan.harian');
+        Route::get('/preview', [LaporanController::class, 'preview'])->name('laporan.preview');
     });
 });

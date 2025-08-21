@@ -31,4 +31,20 @@ class LaporanController extends Controller
             'tanggal_akhir' => $request->tanggal_akhir,
         ]);
     }
+
+    public function preview(Request $request)
+    {
+        $request->validate([
+            'tanggal_awal' => 'required|date',
+            'tanggal_akhir' => 'required|date|after_or_equal:tanggal_awal',
+        ]);
+
+        $jadwals = Jadwal::whereBetween('tgl', [$request->tanggal_awal, $request->tanggal_akhir])
+            ->with(['pasien', 'dokter', 'tarif.layanan'])
+            ->orderBy('tgl', 'asc')
+            ->orderBy('waktu', 'asc')
+            ->get();
+
+        return response()->json($jadwals);
+    }
 }
