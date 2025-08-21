@@ -10819,3 +10819,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}

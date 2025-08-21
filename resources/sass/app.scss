@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
